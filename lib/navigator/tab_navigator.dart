@@ -12,6 +12,7 @@ class TabNavigator extends StatefulWidget {
 class _TabNavigatorState extends State<TabNavigator> {
   final _defaultColor = Colors.grey;
   final _activeColor = Colors.blue;
+  final _defaultBackgroundColor = Colors.green;
   int _currentIndex = 0;
   final PageController _controller = PageController(initialPage: 0);
 
@@ -30,6 +31,8 @@ class _TabNavigatorState extends State<TabNavigator> {
             _currentIndex = index;
           });
         },
+        // backgroundColor: _defaultBackgroundColor,
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
@@ -40,7 +43,7 @@ class _TabNavigatorState extends State<TabNavigator> {
               Icons.home,
               color: _activeColor,
             ),
-            title: Text('首页', style: TextStyle(color: _currentIndex == 0 ? _activeColor : _defaultColor)),
+            title: Text('首页', style: TextStyle(color: _currentIndex != 0 ? _defaultColor : _activeColor)),
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -51,7 +54,7 @@ class _TabNavigatorState extends State<TabNavigator> {
               Icons.search,
               color: _activeColor,
             ),
-            title: Text('搜索', style: TextStyle(color: _currentIndex == 1 ? _activeColor : _defaultColor)),
+            title: Text('搜索', style: TextStyle(color: _currentIndex != 1 ? _defaultColor : _activeColor)),
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -62,7 +65,7 @@ class _TabNavigatorState extends State<TabNavigator> {
               Icons.camera_alt,
               color: _activeColor,
             ),
-            title: Text('首页', style: TextStyle(color: _currentIndex == 2 ? _activeColor : _defaultColor)),
+            title: Text('首页', style: TextStyle(color: _currentIndex != 2 ? _defaultColor : _activeColor)),
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -73,7 +76,7 @@ class _TabNavigatorState extends State<TabNavigator> {
               Icons.account_circle,
               color: _activeColor,
             ),
-            title: Text('首页', style: TextStyle(color: _currentIndex == 3 ? _activeColor : _defaultColor)),
+            title: Text('首页', style: TextStyle(color: _currentIndex != 3 ? _defaultColor : _activeColor)),
           ),
         ],
       ),
