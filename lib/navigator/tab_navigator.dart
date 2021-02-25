@@ -12,7 +12,6 @@ class TabNavigator extends StatefulWidget {
 class _TabNavigatorState extends State<TabNavigator> {
   final _defaultColor = Colors.grey;
   final _activeColor = Colors.blue;
-  final _defaultBackgroundColor = Colors.green;
   int _currentIndex = 0;
   final PageController _controller = PageController(initialPage: 0);
 
@@ -21,7 +20,12 @@ class _TabNavigatorState extends State<TabNavigator> {
     return Scaffold(
       body: PageView(
         controller: _controller,
-        children: [HomePage(), MyPage(), SearchPage(), TravelPage()],
+        children: [
+          HomePage(),
+          SearchPage(),
+          TravelPage(),
+          MyPage(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -34,52 +38,26 @@ class _TabNavigatorState extends State<TabNavigator> {
         // backgroundColor: _defaultBackgroundColor,
         type: BottomNavigationBarType.fixed,
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              color: _defaultColor,
-            ),
-            activeIcon: Icon(
-              Icons.home,
-              color: _activeColor,
-            ),
-            title: Text('首页', style: TextStyle(color: _currentIndex != 0 ? _defaultColor : _activeColor)),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-              color: _defaultColor,
-            ),
-            activeIcon: Icon(
-              Icons.search,
-              color: _activeColor,
-            ),
-            title: Text('搜索', style: TextStyle(color: _currentIndex != 1 ? _defaultColor : _activeColor)),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.camera_alt,
-              color: _defaultColor,
-            ),
-            activeIcon: Icon(
-              Icons.camera_alt,
-              color: _activeColor,
-            ),
-            title: Text('首页', style: TextStyle(color: _currentIndex != 2 ? _defaultColor : _activeColor)),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle,
-              color: _defaultColor,
-            ),
-            activeIcon: Icon(
-              Icons.account_circle,
-              color: _activeColor,
-            ),
-            title: Text('首页', style: TextStyle(color: _currentIndex != 3 ? _defaultColor : _activeColor)),
-          ),
+          _bottomNavigationBarItem(Icons.home, '首页', 0),
+          _bottomNavigationBarItem(Icons.search, '搜索', 1),
+          _bottomNavigationBarItem(Icons.camera_alt, '搜索', 2),
+          _bottomNavigationBarItem(Icons.account_circle, '我的', 3),
         ],
       ),
+    );
+  }
+
+  BottomNavigationBarItem _bottomNavigationBarItem(icon, txt, index) {
+    return BottomNavigationBarItem(
+      icon: Icon(
+        icon,
+        color: _defaultColor,
+      ),
+      activeIcon: Icon(
+        icon,
+        color: _activeColor,
+      ),
+      title: Text(txt, style: TextStyle(color: _currentIndex != index ? _defaultColor : _activeColor)),
     );
   }
 }
