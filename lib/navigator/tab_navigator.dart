@@ -12,8 +12,8 @@ class TabNavigator extends StatefulWidget {
 class _TabNavigatorState extends State<TabNavigator> {
   final _defaultColor = Colors.grey;
   final _activeColor = Colors.blue;
-  int _currentIndex = 0;
-  final PageController _controller = PageController(initialPage: 0);
+  int _currentIndex = 1;
+  final PageController _controller = PageController(initialPage: 1);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,9 @@ class _TabNavigatorState extends State<TabNavigator> {
         controller: _controller,
         children: [
           HomePage(),
-          SearchPage(),
+          SearchPage(
+            hideLeft: true,
+          ),
           TravelPage(),
           MyPage(),
         ],
@@ -35,7 +37,6 @@ class _TabNavigatorState extends State<TabNavigator> {
             _currentIndex = index;
           });
         },
-        // backgroundColor: _defaultBackgroundColor,
         type: BottomNavigationBarType.fixed,
         items: [
           _bottomNavigationBarItem(Icons.home, '首页', 0),
