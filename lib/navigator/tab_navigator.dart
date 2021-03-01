@@ -12,8 +12,8 @@ class TabNavigator extends StatefulWidget {
 class _TabNavigatorState extends State<TabNavigator> {
   final _defaultColor = Colors.grey;
   final _activeColor = Colors.blue;
-  int _currentIndex = 1;
-  final PageController _controller = PageController(initialPage: 1);
+  int _currentIndex = 2;
+  final PageController _controller = PageController(initialPage: 2);
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ class _TabNavigatorState extends State<TabNavigator> {
           TravelPage(),
           MyPage(),
         ],
+        physics: NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -41,7 +42,7 @@ class _TabNavigatorState extends State<TabNavigator> {
         items: [
           _bottomNavigationBarItem(Icons.home, '首页', 0),
           _bottomNavigationBarItem(Icons.search, '搜索', 1),
-          _bottomNavigationBarItem(Icons.camera_alt, '搜索', 2),
+          _bottomNavigationBarItem(Icons.camera_alt, '旅拍', 2),
           _bottomNavigationBarItem(Icons.account_circle, '我的', 3),
         ],
       ),
